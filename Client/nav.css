@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+* {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.47);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  font-size: large;
+  width: 100%; /* Add this line to make the navbar span the full width */
+  top: 0; /* Add this line to position the navbar at the top */
+  z-index: 1000;
+  height: 70px; /* Ensure the navbar is above other elements */
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav li {
+  height: 70px;
+  margin-right: 20px;
+}
+
+nav a {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+  transition: transform 0.3s; /* Add a transition for the transform property */
+}
+
+nav a:hover {
+  background-color: #c5c4c4ae;
+  transform: translateY(-3px) translateZ(0); /* Add a 3D translation effect on hover */
+}
+
+nav li:first-child {
+  margin-right: auto;
+}
+
+nav li.header a:hover {
+  transform: translateY(0px) translateZ(0); /* Add a 3D translation effect on hover */
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.312);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(255, 255, 255, 0.2);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 100%;
+  }
+}

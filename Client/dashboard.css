@@ -1,0 +1,68 @@
+/* dashboard.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background: url("https://e1.pxfuel.com/desktop-wallpaper/158/660/desktop-wallpaper-black-backgrounds-black-website-background.jpg");
+}
+
+.body {
+  text-align: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  margin: 30px 50px;
+}
+
+.graph-container {
+  width: 700px;
+  height: 50%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #ffffffcb; /* Set a background color for better visibility */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.table-container {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #ffffffcb; /* Set a background color for better visibility */
+  box-shadow: 0 0 10rgb (255, 255, 255) gba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.graph-section {
+  width: 600px;
+  margin: 20px auto;
+}
+
+.table-section {
+  width: 600px;
+  margin: 20px auto;
+  /* Adjust the width as needed */
+  /* Add margin to separate the graph and table sections */
+}
+
+h2 {
+  margin: 30px 0px 20px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,111 @@
+<!-- student.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="student.css" />
+    <link rel="stylesheet" href="nav.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Student Details</title>
+  </head>
+
+  <body>
+    <nav>
+      <ul class="sidebar">
+        <li onclick="hideSidebar()">
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+              /></svg
+          ></a>
+        </li>
+        <li class="header"><a href="home.html">EDUPULSE</a></li>
+        <li class="hideOnMobile"><a href="home.html">Home</a></li>
+        <li class="hideOnMobile"><a href="reg.html">Students</a></li>
+        <li><a href="studdetails.html">Details</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <ul>
+        <li class="header"><a href="home.html">EDUPULSE</a></li>
+        <li class="hideOnMobile"><a href="home.html">Home</a></li>
+        <li class="hideOnMobile"><a href="reg.html">Students</a></li>
+        <li class="hideOnMobile"><a href="studdetails.html">Details</a></li>
+        <li class="hideOnMobile"><a href="dashboard.html">Dashboard</a></li>
+        <li class="menu-button" onclick="showSidebar()">
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              /></svg
+          ></a>
+        </li>
+      </ul>
+    </nav>
+    <div class="body">
+      <div class="profile-container">
+        <div class="profile-picture" id="profilePicture">
+          <!-- Update the image source dynamically using JavaScript -->
+          <img src="" alt="Profile Picture" id="studentImage" />
+        </div>
+
+        <div class="user-info">
+          <h2 id="prof-username">Name:</h2>
+          <p id="prof-rollno">Roll no:</p>
+          <p id="prof-age">Age:</p>
+          <p id="prof-marks">Marks:</p>
+        </div>
+
+        <div class="action-buttons">
+          <button class="edit-btn" onclick="editProfile()">Edit</button>
+          <button class="delete-btn" onclick="deleteProfile()">Delete</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Sample data for testing (replace this with actual data from your server)
+      const studentDetails = {
+        name: "Student name",
+        rollNo: "Roll No",
+        age: "Age",
+        marks: "Marks",
+        image_url:
+          "https://icon-library.com/images/profile-icon-images/profile-icon-images-14.jpg",
+      };
+
+      // Update profile information dynamically using JavaScript
+      document.getElementById(
+        "prof-username"
+      ).textContent = `Name: ${studentDetails.name}`;
+      document.getElementById(
+        "prof-rollno"
+      ).textContent = `Roll no: ${studentDetails.rollNo}`;
+      document.getElementById(
+        "prof-age"
+      ).textContent = `Age: ${studentDetails.age} years`;
+      document.getElementById(
+        "prof-marks"
+      ).textContent = `Marks: ${studentDetails.marks}`;
+      document.getElementById("studentImage").src = studentDetails.image_url;
+    </script>
+  </body>
+</html>

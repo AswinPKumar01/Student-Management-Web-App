@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap");
+
+body {
+  background: url("https://e1.pxfuel.com/desktop-wallpaper/158/660/desktop-wallpaper-black-backgrounds-black-website-background.jpg");
+}
+
+.carousel-item img {
+  max-width: 1500px; /* Set the maximum width in pixels */
+  min-height: 615px; /* Set the maximum height in pixels */
+  margin: auto;
+}
+
+.carousel-caption {
+  text-align: center;
+  background-color: #ffffff74;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  height: 30%;
+}
+
+.carousel-caption h5 {
+  font-family: "Poppins", sans-serif;
+  margin-top: 40px;
+  font-size: 34px;
+  color: black;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-family: "Poppins", sans-serif;
+  color: black;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+.footer {
+  background-color: #00000061;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+}
+
+.footer p {
+  margin-top: 10px;
+}

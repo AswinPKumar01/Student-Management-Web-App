@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+* {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://e1.pxfuel.com/desktop-wallpaper/158/660/desktop-wallpaper-black-backgrounds-black-website-background.jpg");
+}
+
+.body {
+  margin-top: 30px;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 50px;
+
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.download-btn {
+  text-align: center; /* Center the button within its container */
+  margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.download-btn button {
+  width: 12%;
+  height: 40px;
+  text-align: center;
+  background: #fefdfdd5;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(153, 153, 153, 0.741);
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+  transition: box-shadow 0.3s, color 0.3s, transform 0.3s;
+  margin-top: 20px;
+}
+
+.download-btn button:hover {
+  box-shadow: 0 0 15px rgba(122, 122, 122, 0.881);
+  color: black;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.student-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center; /* Center the cards horizontally */
+}
+
+.student-card {
+  background-color: #ffffff7c;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  margin-bottom: 20px;
+  text-align: center; /* Align contents to center */
+}
+
+.student-image {
+  max-width: 80%; /* Make sure the image doesn't exceed the container width */
+  border-radius: 50%; /* Make the image round (optional) */
+  margin-bottom: 10px;
+}
+
+.student-details {
+  margin-top: 10px; /* Add some spacing between image and details */
+}
+
+.student-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.student-details h {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.student-details p {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

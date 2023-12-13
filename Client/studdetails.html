@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <link rel="stylesheet" href="stud.css" />
+    <link rel="stylesheet" href="nav.css" />
+
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <ul class="sidebar">
+        <li onclick="hideSidebar()">
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+              /></svg
+          ></a>
+        </li>
+        <li class="header"><a href="home.html">EDUPULSE</a></li>
+        <li class="hideOnMobile"><a href="home.html">Home</a></li>
+        <li class="hideOnMobile"><a href="reg.html">Students</a></li>
+        <li><a href="studdetails.html">Details</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <ul>
+        <li class="header"><a href="home.html">EDUPULSE</a></li>
+        <li class="hideOnMobile"><a href="home.html">Home</a></li>
+        <li class="hideOnMobile"><a href="reg.html">Students</a></li>
+        <li class="hideOnMobile"><a href="studdetails.html">Details</a></li>
+        <li class="hideOnMobile"><a href="dashboard.html">Dashboard</a></li>
+        <li class="menu-button" onclick="showSidebar()">
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              /></svg
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <h1>Student Details</h1>
+    <div class="download-btn">
+      <button onclick="downloadAllStudents()">Download All</button>
+    </div>
+
+    <div class="body">
+      <div id="studentList" class="student-cards-container"></div>
+
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          window.getStudentsDetails = function () {
+            $.ajax({
+              type: "GET",
+              url: "http://localhost:5000/api/studdetails",
+              success: function (students) {
+                displayStudentsDetails(students);
+              },
+            });
+          };
+
+          function displayStudentsDetails(students) {
+            $("#studentList").html("");
+            students.forEach(function (student) {
+              // Update the click event to redirect to the individual student details page
+              const studentCard = $(`
+                <div class="student-card">
+                  <img src="${
+                    student.image_url ||
+                    "https://icon-library.com/images/profile-icon-images/profile-icon-images-14.jpg"
+                  }" alt="Student Image" class="student-image" />
+                  <div class="student-details">
+                    <h3>Name: ${student.name}</h3>
+                    <p>Roll no: ${student.roll_no}</p>
+                  </div>
+                </div>
+              `);
+
+              // Add a click event to the student card
+              studentCard.click(function () {
+                // Redirect to the individual student details page
+                window.location.href = `student.html?rollNo=${student.roll_no}`;
+              });
+
+              $("#studentList").append(studentCard);
+            });
+          }
+
+          // Initial load of student details
+          getStudentsDetails();
+
+          // Function to download all student details as CSV
+          // Function to download all student details as CSV
+          window.downloadAllStudents = function () {
+            $.ajax({
+              type: "GET",
+              url: "http://localhost:5000/api/downloadAllStudents",
+              success: function (csvData) {
+                downloadCSV(csvData, "all_students.csv");
+              },
+            });
+          };
+
+          function downloadCSV(data, filename) {
+            const blob = new Blob([data], { type: "text/csv;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
