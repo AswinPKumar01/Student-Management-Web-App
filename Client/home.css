@@ -5,8 +5,8 @@ body {
 }
 
 .carousel-item img {
-  max-width: 1500px; /* Set the maximum width in pixels */
-  min-height: 615px; /* Set the maximum height in pixels */
+  max-width: 1500px;
+  min-height: 615px;
   margin: auto;
 }
 

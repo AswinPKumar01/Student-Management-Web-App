@@ -1,6 +1,3 @@
-// dashboard.js
-
-// Function to calculate mark distribution
 function calculateMarkDistribution(students) {
   const distribution = {
     above90: 0,

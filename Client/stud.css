@@ -28,8 +28,8 @@ h1 {
 }
 
 .download-btn {
-  text-align: center; /* Center the button within its container */
-  margin-top: 20px; /* Adjust the top margin as needed */
+  text-align: center;
+  margin-top: 20px;
 }
 
 .download-btn button {
@@ -60,7 +60,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  justify-content: center; /* Center the cards horizontally */
+  justify-content: center;
 }
 
 .student-card {
@@ -72,17 +72,17 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   margin-bottom: 20px;
-  text-align: center; /* Align contents to center */
+  text-align: center;
 }
 
 .student-image {
-  max-width: 80%; /* Make sure the image doesn't exceed the container width */
-  border-radius: 50%; /* Make the image round (optional) */
+  max-width: 80%;
+  border-radius: 50%;
   margin-bottom: 10px;
 }
 
 .student-details {
-  margin-top: 10px; /* Add some spacing between image and details */
+  margin-top: 10px;
 }
 
 .student-card:hover {

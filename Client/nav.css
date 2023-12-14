@@ -15,10 +15,10 @@ nav {
   background-color: rgba(255, 255, 255, 0.47);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   font-size: large;
-  width: 100%; /* Add this line to make the navbar span the full width */
-  top: 0; /* Add this line to position the navbar at the top */
+  width: 100%;
+  top: 0;
   z-index: 1000;
-  height: 70px; /* Ensure the navbar is above other elements */
+  height: 70px;
 }
 
 nav ul {
@@ -41,12 +41,12 @@ nav a {
   display: flex;
   align-items: center;
   color: black;
-  transition: transform 0.3s; /* Add a transition for the transform property */
+  transition: transform 0.3s;
 }
 
 nav a:hover {
   background-color: #c5c4c4ae;
-  transform: translateY(-3px) translateZ(0); /* Add a 3D translation effect on hover */
+  transform: translateY(-3px) translateZ(0);
 }
 
 nav li:first-child {
@@ -54,7 +54,7 @@ nav li:first-child {
 }
 
 nav li.header a:hover {
-  transform: translateY(0px) translateZ(0); /* Add a 3D translation effect on hover */
+  transform: translateY(0px) translateZ(0);
 }
 
 .sidebar {

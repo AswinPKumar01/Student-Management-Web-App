@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // Function to display messages
   function displayMessage(message, messageType) {
     var messageDiv = $("#studentError");
     messageDiv
