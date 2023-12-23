@@ -29,7 +29,6 @@ function findTopLowestMarks(students) {
   return { topMark, lowestMark };
 }
 
-// Function to fetch student data from the server
 function fetchStudentData() {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -46,7 +45,6 @@ function fetchStudentData() {
   });
 }
 
-// Function to display mark distribution chart
 async function displayMarkDistributionChart() {
   try {
     const students = await fetchStudentData();
@@ -103,11 +101,9 @@ async function displayMarkDistributionChart() {
     });
   } catch (error) {
     console.error(error);
-    // Handle error
   }
 }
 
-// Function to display all students' marks with rank in descending order
 async function displayAllStudentsMarksTable() {
   try {
     const students = await fetchStudentData();
@@ -128,11 +124,9 @@ async function displayAllStudentsMarksTable() {
     });
   } catch (error) {
     console.error(error);
-    // Handle error
   }
 }
 
-// Display mark distribution chart and all students' marks table on page load
 document.addEventListener("DOMContentLoaded", function () {
   displayMarkDistributionChart();
   displayAllStudentsMarksTable();

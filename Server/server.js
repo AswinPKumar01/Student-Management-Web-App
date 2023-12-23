@@ -1,19 +1,21 @@
 const express = require("express");
 const mysql = require("mysql2");
-const router = express.Router(); // Create an Express router
+const router = express.Router();
 const json2csv = require("json2csv").parse;
 const fs = require("fs");
-const path = require("path"); // Add this line
+const path = require("path");
+const dotenv = require("dotenv");
 
-// Create a MySQL connection
+// Load environment variables from .env file
+dotenv.config();
+
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "APKroot&123",
-  database: "Student_Management",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 });
 
-// Connect to the database
 db.connect((err) => {
   if (err) {
     console.error("Error connecting to MySQL:", err);
@@ -22,7 +24,6 @@ db.connect((err) => {
   console.log("Connected to MySQL");
 });
 
-// Middleware to parse JSON data
 router.use(express.json());
 
 router.post("/addStudent", async (req, res) => {
@@ -30,7 +31,7 @@ router.post("/addStudent", async (req, res) => {
 
   try {
     const query = `
-      INSERT INTO students (name, age, marks, image_url, roll_no) 
+      INSERT INTO ${process.env.DB_TABLE} (name, age, marks, image_url, roll_no) 
       VALUES (?, ?, ?, ?, ?)
     `;
     const result = await db
@@ -41,23 +42,20 @@ router.post("/addStudent", async (req, res) => {
     console.error("Error adding student:", err);
 
     if (err.code === "ER_DUP_ENTRY") {
-      // Return a specific error code for duplicate entry
       res.status(400).json({
         error: "DUPLICATE_ENTRY",
         message: `Student with the Roll No ${rollNo} already exists`,
       });
     } else if (err.code === "ER_WARN_DATA_OUT_OF_RANGE") {
-      // Display a specific message for out-of-range value error
       res.status(400).send("Error: Out of range value for one or more fields");
     } else {
-      // Display a generic error message for other errors
       res.status(500).send("Error adding student");
     }
   }
 });
 
 router.get("/studdetails", (req, res) => {
-  const query = "SELECT * FROM students";
+  const query = `SELECT * FROM ${process.env.DB_TABLE}`;
 
   db.query(query, (err, results) => {
     if (err) {
@@ -65,17 +63,14 @@ router.get("/studdetails", (req, res) => {
       res.status(500).send("Error getting students");
       return;
     }
-
-    // Send the list of students as JSON
-    res.json(results); // Assuming results is an array of student objects
+    res.json(results);
   });
 });
 
-// Add this route to your server code
 router.get("/student/:rollNo", (req, res) => {
   const { rollNo } = req.params;
 
-  const query = "SELECT * FROM students WHERE roll_no = ?";
+  const query = `SELECT * FROM ${process.env.DB_TABLE} WHERE roll_no = ?`;
   db.query(query, [rollNo], (err, results) => {
     if (err) {
       console.error("Error getting student details:", err);
@@ -88,22 +83,29 @@ router.get("/student/:rollNo", (req, res) => {
       return;
     }
 
-    // Send the student details as JSON
     res.json(results[0]);
   });
 });
 
-// Update your existing server-side route for editing
 router.put("/editStudent/:rollNo", async (req, res) => {
   const { rollNo } = req.params;
   const { name, age, marks, image_url } = req.body;
 
   try {
-    const query =
-      "UPDATE students SET name = ?, age = ?, marks = ?, image_url = ? WHERE roll_no = ?";
+    const selectQuery = `SELECT * FROM ${process.env.DB_TABLE} WHERE roll_no = ?`;
+    const [existingResults] = await db.promise().query(selectQuery, [rollNo]);
+
+    const updatedName = name !== undefined && name.trim() !== '' ? name : existingResults[0].name;
+    const updatedAge = age !== undefined && age.trim() !== '' ? age : existingResults[0].age;
+    const updatedMarks = marks !== undefined && marks.trim() !== '' ? marks : existingResults[0].marks;
+    const updatedImageUrl = image_url !== undefined && image_url.trim() !== '' ? image_url : existingResults[0].image_url;
+
+    const updateQuery =
+      `UPDATE ${process.env.DB_TABLE} SET name = ?, age = ?, marks = ?, image_url = ? WHERE roll_no = ?`;
     const result = await db
       .promise()
-      .query(query, [name, age, marks, image_url, rollNo]);
+      .query(updateQuery, [updatedName, updatedAge, updatedMarks, updatedImageUrl, rollNo]);
+
     res.send("Student details updated successfully");
   } catch (err) {
     console.error("Error editing student details:", err);
@@ -111,12 +113,12 @@ router.put("/editStudent/:rollNo", async (req, res) => {
   }
 });
 
-// Update your existing server-side route for deleting
+
 router.delete("/deleteStudent/:rollNo", async (req, res) => {
   const { rollNo } = req.params;
 
   try {
-    const query = "DELETE FROM students WHERE roll_no = ?";
+    const query = `DELETE FROM ${process.env.DB_TABLE} WHERE roll_no = ?`;
     const result = await db.promise().query(query, [rollNo]);
     res.send("Student deleted successfully");
   } catch (err) {
@@ -126,23 +128,19 @@ router.delete("/deleteStudent/:rollNo", async (req, res) => {
 });
 router.get("/downloadAllStudents", async (req, res) => {
   try {
-    // Fetch data from the database
-    const query = "SELECT * FROM students";
+    const query = `SELECT * FROM ${process.env.DB_TABLE}`;
     const [results] = await db.promise().query(query);
 
-    // Convert data to CSV format
     const csvData = json2csv(results, {
       fields: ["name", "roll_no", "age", "marks", "image_url"],
     });
 
-    // Set headers for the response
     res.setHeader("Content-Type", "text/csv");
     res.setHeader(
       "Content-Disposition",
       "attachment; filename=all_students.csv"
     );
 
-    // Send the CSV data as the response
     res.send(csvData);
   } catch (error) {
     console.error("Error generating CSV file:", error);

@@ -2,6 +2,10 @@
 
 body {
   background: url("https://e1.pxfuel.com/desktop-wallpaper/158/660/desktop-wallpaper-black-backgrounds-black-website-background.jpg");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .carousel-item img {
@@ -38,16 +42,17 @@ body {
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: #00000061;
   color: white;
   padding: 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   text-align: center;
   height: 60px;
 }
 
 .footer p {
   margin-top: 10px;
+  text-align: center;
 }

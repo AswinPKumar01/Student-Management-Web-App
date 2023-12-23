@@ -79,7 +79,7 @@
           function displayStudentsDetails(students) {
             $("#studentList").html("");
             students.forEach(function (student) {
-              // Update the click event to redirect to the individual student details page
+
               const studentCard = $(`
                 <div class="student-card">
                   <img src="${
@@ -103,11 +103,8 @@
             });
           }
 
-          // Initial load of student details
           getStudentsDetails();
 
-          // Function to download all student details as CSV
-          // Function to download all student details as CSV
           window.downloadAllStudents = function () {
             $.ajax({
               type: "GET",
