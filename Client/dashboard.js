@@ -21,7 +21,6 @@ function calculateMarkDistribution(students) {
   return Object.values(distribution).reverse();
 }
 
-// Function to find top and lowest marks
 function findTopLowestMarks(students) {
   const sortedStudents = [...students].sort((a, b) => b.marks - a.marks);
   const topMark = sortedStudents[0];
@@ -115,7 +114,7 @@ async function displayAllStudentsMarksTable() {
     sortedStudents.forEach((student, index) => {
       tableBody.innerHTML += `
           <tr>
-            <td>${index + 1}st</td>
+            <td>${index + 1}</td>
             <td>${student.name}</td>
             <td>${student.roll_no}</td>
             <td>${student.marks}</td>
