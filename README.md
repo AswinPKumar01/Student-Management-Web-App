@@ -16,7 +16,9 @@ Additionally, the system offers the functionality to download all student detail
 
 5. **Delete Student:** Remove a student from the system.
 
-6. **Download All Students:** Download a CSV file containing details of all students.
+6. **Student Dashboard:** Comprehensive dashboard for a visual representation of student data including marks distribution and marks hierarchy.
+
+7. **Download All Students:** Download a CSV file containing details of all students.
 
 ## Tech Stacks Used
 - Frontend: HTML, CSS, JavaScript, jQuery, AJAX
