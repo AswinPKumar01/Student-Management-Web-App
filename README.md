@@ -1,9 +1,8 @@
 # EDUPULSE - Student Management System
 
-## Overview
-This is a Student Management System web application system that allows users to add, view, edit, and delete student details. 
-Additionally, it provides functionality to download all student details in CSV format.
-
+The Student Management System is a web application that facilitates the management of student details. 
+Users can perform various operations such as adding, viewing, editing, and deleting student records. 
+Additionally, the system offers the functionality to download all student details in CSV format.
 
 ## Features
 
@@ -23,6 +22,10 @@ Additionally, it provides functionality to download all student details in CSV f
 - Frontend: HTML, CSS, JavaScript, jQuery, AJAX
 - Backend: Node.js, Express.js
 - Database: MySQL
+
+## Demo
+
+Watch a demo of the project [here](https://drive.google.com/file/d/1kXa1G9PWCe9DJgXG_0OpbTzZCt11IBFQ/view?usp=sharing)
 
 ## Setup Instructions
 
@@ -101,5 +104,7 @@ CREATE TABLE your_table_name (
 
 ## Contributing
 Feel free to contribute to this project by opening issues or submitting pull requests.
-If there are any issues regarding the project, reach me out [here](mailto:aswinpkumar03@gmail.com).
+If there are any issues regarding the project, [contact me](mailto:aswinpkumar03@gmail.com).
 
+## Author
+Created by [Aswin P Kumar](https://linktr.ee/aswinpkumar)
